@@ -1,4 +1,4 @@
-# vue-touch
+# vue-tap
 
 > tap events plugin for Vue.js
 
