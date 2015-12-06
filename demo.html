@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="vue.js"></script>
+    <style>
+        body {
+            color: #fff;
+        }
+        #demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        #demo1 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        #demo2 {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="demo" v-tap="testStr">red</div>
+<div id="demo1" v-tap="tapTest">blue</div>
+<div id="demo2" v-tap="tapTest">green</div>
+<a href="http://www.google.com" v-tap="tapTest">I'm a tag</a>
+<script src="vue.js"></script>
+<script src="demo.js"></script>
+<script>
+    new Vue({
+        el: "body",
+        data : {
+          testStr : 'string'
+        },
+        methods : {
+            tapTest : function(e,tapObj) {
+                e.preventDefault();
+                console.log('-----this-----',this);
+                console.log('-----e-----',e);
+                console.log('-----tapObj-----',tapObj);
+            }
+        }
+    });
+</script>
+</body>
+</html>
