@@ -4,8 +4,6 @@
 
 Without any dependence
 
-```
-
 ## Example
 
 ```html
