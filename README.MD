@@ -1,27 +1,54 @@
 # vue-tap
 
-> tap events plugin for Vue.js
+> tap手势基于vue.js
 
-Without any dependence
+无需任何依赖
 
-## Example
+## 栗子
 
 ```html
-<div id="demo" v-tap="tapTest">red</div>
+<a id="demo" v-tap="callback">red</a>
 ```
 
 ```javascript
 new Vue({
 	el: "body",
 	methods : {
-		tapTest : function(e,tapObj) {
+		callback : function(e) {
+			//不带参数指令,e为event对象
 			e.preventDefault();
-			console.log('-----this-----',this);
-			console.log('-----e-----',e);
-			console.log('-----tapObj-----',tapObj);
+			console.log('---e---',e);
+			console.log('---tapObj---', e.tapObj);
 		}
 	}
 });
 ```
+
+带参数回调
+
+```html
+<ul>
+	<li v-for="el in list"
+		v-tap="args($index,el,$event)"
+			>
+		{{el.name}}---{{el.age}}
+	</li>
+</ul>
+```
+
+```javascript
+args : function(index,el,e) {
+	// v-for循环带参数的回调
+	console.log('---index---',index);
+	console.log('---el---',el);
+	console.log('---e---',e);
+	console.log(e.tapObj);
+	//e.tapObj 可获得 tap的一些参数
+	//pageX,pageY,clientX,clientY,distanceX,distanceY
+	//后面2个分别的手指可能移动的位置(以后可用于拓展手势)
+}
+```
+
+
 
 

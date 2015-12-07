@@ -10,8 +10,6 @@
             color: #fff;
         }
         #demo {
-            width: 100px;
-            height: 100px;
             background: red;
         }
         #demo1 {
@@ -24,27 +22,53 @@
             height: 100px;
             background: green;
         }
+        #error {
+            color: red;
+        }
     </style>
 </head>
 <body>
-<div id="demo" v-tap="testStr">red</div>
-<div id="demo1" v-tap="tapTest">blue</div>
-<div id="demo2" v-tap="tapTest">green</div>
-<a href="http://www.google.com" v-tap="tapTest">I'm a tag</a>
+<div id="demo">
+    <ul>
+        <li v-for="el in list"
+            v-tap="args($index,el,$event)"
+                >
+            {{el.name}}---{{el.age}}
+        </li>
+    </ul>
+</div>
+<a href="#" v-tap="callback">I'm a tag</a>
 <script src="vue.js"></script>
 <script src="vue-tap.js"></script>
 <script>
     new Vue({
         el: "body",
         data : {
-          testStr : 'string'
+          testStr : 'string',
+            list : [{
+                name : "name1",
+                age: 18
+            },{
+                name : "name2",
+                age: 11
+            }]
         },
         methods : {
-            tapTest : function(e,tapObj) {
+            args : function(index,el,e) {
+                // v-for循环带参数的回调
+                console.log('---index---',index);
+                console.log('---el---',el);
+                console.log('---e---',e);
+                console.log(e.tapObj);
+                //e.tapObj 可获得 tap的一些参数
+                //pageX,pageY,clientX,clientY,distanceX,distanceY
+                //后面2个分别的手指可能移动的位置(以后可用于拓展手势)
+            },
+            callback : function(e) {
+                //不带参数指令,e为event对象
                 e.preventDefault();
-                console.log('-----this-----',this);
-                console.log('-----e-----',e);
-                console.log('-----tapObj-----',tapObj);
+                console.log('---e---',e);
+                console.log('---tapObj---', e.tapObj);
             }
         }
     });

@@ -1,20 +1,40 @@
 /**
  * Created by 二哲 on 15/12/6.
  */
+/*
+* 不带参数指令
+* v-tap=handler
+* or
+* 带参数指令
+* v-tap=handler($index,el,$event)
+*
+* !!!新增!!!
+* 把tapObj对象注册在原生event对象上
+* event.tapObj拥有6个值
+* pageX,pageY,clientX,clientY,distanceX,distanceY
+* 后面2个分别的手指可能移动的位置(以后可用于拓展手势)
+*
+* */
 ;(function() {
     var vueTap = {};
     vueTap.install = function(Vue) {
         Vue.directive('tap', {
             isFn : true,
+            acceptStatement : true,
             bind : function() {
                  //bind callback
             },
             update : function(fn) {
                 var self = this;
                     self.tapObj = {};
+
                 if(typeof fn !== 'function') {
                     return console.error('The param of directive "v-tap" must be a function!');
                 }
+                self.handler = function(e) { //This directive.handler
+                    e.tapObj = self.tapObj;
+                    fn.call(self,e);
+                };
                 this.el.addEventListener('touchstart',function(e) {
                     self.touchstart(e,self);
                 },false);
@@ -36,16 +56,15 @@
                 tapObj.clientY = touches.clientY;
                 self.time = +new Date();
             },
-            touchend : function(e,self,fn) {
+            touchend : function(e,self) {
                 var touches = e.changedTouches[0];
                 var tapObj = self.tapObj;
-                e.targetVM = self.vm;
                 self.time = +new Date() - self.time;
                 tapObj.distanceX = tapObj.pageX - touches.pageX;
                 tapObj.distanceY = tapObj.pageY - touches.pageY;
-                if (self.isTap(tapObj)) {
-                    fn.call(self.vm, e, tapObj);
-                }
+
+                if (self.isTap(tapObj))
+                    self.handler(e);
             }
         });
     };
