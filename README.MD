@@ -8,6 +8,8 @@
 
 ```html
 <a id="demo" v-tap="callback">red</a>
+2015/12/18新增可用 .stop.prevent
+<a id="demo" v-tap.stop.prevent="callback">red</a>
 ```
 
 ```javascript

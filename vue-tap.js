@@ -35,7 +35,13 @@
                     e.tapObj = self.tapObj;
                     fn.call(self,e);
                 };
+                console.log(this.modifiers);
                 this.el.addEventListener('touchstart',function(e) {
+                    if(self.modifiers.prevent) {
+                        e.preventDefault();
+                    }
+                    if(self.modifiers.stop)
+                        e.stopPropagation();
                     self.touchstart(e,self);
                 },false);
                 this.el.addEventListener('touchend',function(e) {

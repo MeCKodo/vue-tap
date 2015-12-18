@@ -37,7 +37,7 @@
         </li>
     </ul>
 </div>
-<a href="#" v-tap="callback">I'm a tag</a>
+<a href="www.baidu.com" v-tap.prevent="callback">I'm a tag</a>
 <script src="vue.js"></script>
 <script src="vue-tap.js"></script>
 <script>
@@ -66,7 +66,6 @@
             },
             callback : function(e) {
                 //不带参数指令,e为event对象
-                e.preventDefault();
                 console.log('---e---',e);
                 console.log('---tapObj---', e.tapObj);
             }
