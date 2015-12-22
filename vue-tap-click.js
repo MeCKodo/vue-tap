@@ -35,22 +35,36 @@
                     e.tapObj = self.tapObj;
                     fn.call(self,e);
                 };
-                console.log(this.modifiers);
-                this.el.addEventListener('touchstart',function(e) {
-                    if(self.modifiers.prevent)
-                        e.preventDefault();
-                    if(self.modifiers.stop)
-                        e.stopPropagation();
-                    self.touchstart(e,self);
-                },false);
-                this.el.addEventListener('touchend',function(e) {
-                    self.touchend(e,self,fn);
-                },false);
+                if(self.isPC()) {
+                    self.el.addEventListener('click',function(e) {
+                        fn.call(self,e);
+                    },false);
+                } else {
+                    this.el.addEventListener('touchstart',function(e) {
+                        if(self.modifiers.prevent)
+                            e.preventDefault();
+                        if(self.modifiers.stop)
+                            e.stopPropagation();
+                        self.touchstart(e,self);
+                    },false);
+                    this.el.addEventListener('touchend',function(e) {
+                        self.touchend(e,self,fn);
+                    },false);
+                }
             },
             unbind : function() {},
             isTap : function() {
                 var tapObj = this.tapObj;
                 return this.time < 150 && Math.abs(tapObj.distanceX) < 2 && Math.abs(tapObj.distanceY) < 2;
+            },
+            isPC : function() {
+                var uaInfo = navigator.userAgent;
+                var agents = ["Android", "iPhone", "Windows Phone", "iPad", "iPod"];
+                var flag = true;
+                for (var i = 0; i < agents.length; i++) {
+                    if (uaInfo.indexOf(agents[i]) > 0) { flag = false; break; }
+                }
+                return flag;
             },
             touchstart : function(e,self) {
                 var touches = e.touches[0];

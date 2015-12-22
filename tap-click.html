@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兼容tap和click事件</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box" v-tap="cli"></div>
+<script src="vue.js"></script>
+<script src="vue-tap-click.js"></script>
+<script>
+var V = new Vue({
+    el : "body",
+    methods : {
+        cli : function(e) {
+
+            console.log(e);
+            console.log(this);
+        }
+    }
+})
+</script>
+</body>
+</html>

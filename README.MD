@@ -51,6 +51,8 @@ args : function(index,el,e) {
 }
 ```
 
+### 2015.12.22
 
+> * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
 
 
