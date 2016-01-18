@@ -1,7 +1,7 @@
 /*!
  * Vue.js v1.0.10
- * (c) 2015 Evan You
- * Released under the MIT License.
+ * (c) 2016 二哲
+ * 
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
