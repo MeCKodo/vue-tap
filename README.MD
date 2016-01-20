@@ -58,3 +58,6 @@ args : function(index,el,e) {
 > * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
 > * vue-tap 是不带兼容版本, vue-tap-click兼容版本, 请客官自行选择进食.
 
+### 2015.1.20(merge)
+
+> * 新增 dom带有disable属性时，tap失效
