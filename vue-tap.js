@@ -30,7 +30,7 @@
 
                 if(typeof fn !== 'function') {
                     return console.error('The param of directive "v-tap" must be a function!');
-                } 
+                }
                 self.handler = function(e) { //This directive.handler
                     e.tapObj = self.tapObj;
                     fn.call(self,e);
@@ -49,6 +49,10 @@
             },
             unbind : function() {},
             isTap : function() {
+                var self   = this;
+                if(self.el.disabled){
+                  return false;
+                }
                 var tapObj = this.tapObj;
                 return this.time < 150 && Math.abs(tapObj.distanceX) < 2 && Math.abs(tapObj.distanceY) < 2;
             },
