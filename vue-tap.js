@@ -30,7 +30,7 @@
 
                 if(typeof fn !== 'function') {
                     return console.error('The param of directive "v-tap" must be a function!');
-                } 
+                }
                 self.handler = function(e) { //This directive.handler
                     e.tapObj = self.tapObj;
                     fn.call(self,e);
