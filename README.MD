@@ -8,7 +8,7 @@
 
 ## 使用
 
-> * ES7
+> * ES6
 ```javascript
 import vueTap from './vue-tap-click';
 Vue.use(vueTap);
