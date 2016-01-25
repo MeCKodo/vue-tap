@@ -35,7 +35,7 @@
                     e.tapObj = self.tapObj;
                     fn.call(self,e);
                 };
-                console.log(this.modifiers);
+                //console.log(this.modifiers);
                 this.el.addEventListener('touchstart',function(e) {
                     if(self.modifiers.prevent)
                         e.preventDefault();
