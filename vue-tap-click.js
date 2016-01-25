@@ -37,12 +37,13 @@
                 };
                 if(self.isPC()) {
                     self.el.addEventListener('click',function(e) {
+                        e.preventDefault();
                         fn.call(self,e);
                     },false);
                 } else {
                     this.el.addEventListener('touchstart',function(e) {
-                        if(self.modifiers.prevent)
                             e.preventDefault();
+                            
                         if(self.modifiers.stop)
                             e.stopPropagation();
                         self.touchstart(e,self);
