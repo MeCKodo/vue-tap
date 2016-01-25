@@ -25,8 +25,8 @@ Vue.use(vueTap);
 
 ```html
 <a id="demo" v-tap="callback">red</a>
-2015/12/18新增可用 .stop.prevent
-<a id="demo" v-tap.stop.prevent="callback">red</a>
+2015/12/18新增可用 .stop（默认是 阻止默认事件）
+<a id="demo" v-tap.stop="callback">red</a>
 ```
 
 ```javascript
@@ -76,3 +76,7 @@ args : function(index,el,e) {
 ### 2015.1.20(merge)
 
 > * 新增 dom带有disable属性时，tap失效
+
+### 2015.1.25
+
+> * 新增 默认是阻止默认事件，为了部分安卓的hack。
