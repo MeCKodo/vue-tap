@@ -49,6 +49,7 @@
                         self.touchstart(e,self);
                     },false);
                     this.el.addEventListener('touchend',function(e) {
+                        e.preventDefault();
                         self.touchend(e,self,fn);
                     },false);
                 }
