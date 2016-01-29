@@ -6,12 +6,27 @@
 
 如果能帮到您，请右上角star吧:)
 
+## 使用
+
+> * ES6
+```javascript
+import vueTap from './vue-tap-click';
+Vue.use(vueTap);
+```
+
+> * 直接引入
+```html
+<script src="./vue.js"></script>
+<script src="./vue-tap-click.js"></script>
+```
+
+
 ## 栗子
 
 ```html
 <a id="demo" v-tap="callback">red</a>
-2015/12/18新增可用 .stop.prevent
-<a id="demo" v-tap.stop.prevent="callback">red</a>
+2015/12/18新增可用 .stop（默认是 阻止默认事件）
+<a id="demo" v-tap.stop="callback">red</a>
 ```
 
 ```javascript
@@ -61,3 +76,5 @@ args : function(index,el,e) {
 ### 2015.1.20(merge)
 
 > * 新增 dom带有disable属性时，tap失效
+
+

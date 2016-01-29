@@ -37,17 +37,20 @@
                 };
                 if(self.isPC()) {
                     self.el.addEventListener('click',function(e) {
+                        e.preventDefault();
                         fn.call(self,e);
                     },false);
                 } else {
                     this.el.addEventListener('touchstart',function(e) {
-                        if(self.modifiers.prevent)
-                            e.preventDefault();
+
                         if(self.modifiers.stop)
                             e.stopPropagation();
+                        if(self.modifiers.prevent)
+                            e.preventDefault();
                         self.touchstart(e,self);
                     },false);
                     this.el.addEventListener('touchend',function(e) {
+                        //e.preventDefault();
                         self.touchend(e,self,fn);
                     },false);
                 }

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>兼容tap和click事件</title>
+    <title>兼容tap和click事件</title><meta name="viewport"
+                                      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
     <style>
         #box {
             width: 100px;
@@ -13,19 +15,47 @@
 </head>
 <body>
 <div id="box" v-tap="cli"></div>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p v-tap.prevent="aaa">123上2423412323</p>
+<a href="http://www.baidu.com" v-tap="aaa">水电费</a>
+
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+<p>12312323</p>
+
 <script src="vue.js"></script>
 <script src="vue-tap-click.js"></script>
 <script>
-var V = new Vue({
-    el : "body",
-    methods : {
-        cli : function(e) {
+    var V = new Vue({
+        el: "body",
+        methods: {
+            cli: function (e) {
 
-            console.log(e);
-            console.log(this);
+                console.log(e);
+                console.log(this);
+            },
+            aaa: function (e) {
+                console.log('a 跳转');
+            }
         }
-    }
-})
+    });
 </script>
 </body>
 </html>
