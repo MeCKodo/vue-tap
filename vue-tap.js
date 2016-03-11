@@ -55,7 +55,7 @@
                   return false;
                 }
                 var tapObj = this.tapObj;
-                return this.time < 150 && Math.abs(tapObj.distanceX) < 2 && Math.abs(tapObj.distanceY) < 2;
+                return this.time < 150 && Math.abs(tapObj.distanceX) < 4 && Math.abs(tapObj.distanceY) < 4;
             },
             touchstart : function(e,self) {
                 var touches = e.touches[0];
