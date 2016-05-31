@@ -73,8 +73,10 @@
                 tapObj.distanceX = tapObj.pageX - touches.pageX;
                 tapObj.distanceY = tapObj.pageY - touches.pageY;
 
-                if (self.isTap(tapObj))
+                if (!self.isTap(tapObj)) return;
+                setTimeout(function() {
                     self.handler(e);
+                },200)
             }
         });
     };
