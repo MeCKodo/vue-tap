@@ -43,8 +43,7 @@ Vue.use(vueTap);
 
 ```html
 <a id="demo" v-tap="callback">red</a>
-2015/12/18新增可用 .stop（默认是 阻止默认事件）
-<a id="demo" v-tap.stop="callback">red</a>
+<a id="demo" v-tap.prevent="callback">red</a>
 ```
 
 ```javascript
