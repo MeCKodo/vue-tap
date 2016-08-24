@@ -6,7 +6,24 @@
 
 如果能帮到您，请右上角star吧:)
 
-## 使用
+
+### 2016.8.24(update)
+
+> * 统一为v-tap,兼容`PC`和`移动端`
+> * 新增捕获a标签的href地址,点击a标签可实现快速跳转
+> * 准备加入npm大家庭
+
+
+### 2016.1.20(merge)
+
+> * 新增 dom带有disable属性时，tap失效
+
+### 2015.12.22(update)
+
+> * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
+> * vue-tap 是不带兼容版本, vue-tap-click兼容版本, 请客官自行选择进食.
+
+## How To use
 
 > * ES6
 ```javascript
@@ -21,7 +38,7 @@ Vue.use(vueTap);
 ```
 
 
-## 栗子
+## Example
 
 ```html
 <a id="demo" v-tap="callback">red</a>
@@ -43,7 +60,7 @@ new Vue({
 });
 ```
 
-带参数回调
+## With parmas
 
 ```html
 <ul>
@@ -67,14 +84,5 @@ args : function(index,el,e) {
 	//后面2个分别的手指可能移动的位置(以后可用于拓展手势)
 }
 ```
-
-### 2015.12.22
-
-> * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
-> * vue-tap 是不带兼容版本, vue-tap-click兼容版本, 请客官自行选择进食.
-
-### 2015.1.20(merge)
-
-> * 新增 dom带有disable属性时，tap失效
 
 

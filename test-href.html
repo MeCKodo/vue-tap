@@ -14,34 +14,33 @@
     </style>
 </head>
 <body>
-<div id="box" v-tap="cli"></div>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p v-tap.prevent="aaa">123上2423412323</p>
-<a href="http://www.baidu.com" v-tap="aaa">水电费</a>
-
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
-<p>12312323</p>
+<div id="box" v-tap="cli">我会console.log(e,this)</div>
+<p>item1</p>
+<p>item2</p>
+<p>item3</p>
+<p>item4</p>
+<p>item5</p>
+<p>item6</p>
+<p>item7</p>
+<p>item8</p>
+<p>item9</p>
+<p>item10</p>
+<p>item11</p>
+<p v-tap.prevent="aaa">这里是.prevent的效果</p>
+<p v-tap.prevent="aaa">这里是.prevent的效果</p>
+<p>item12</p>
+<p>item13</p>
+<p>item14</p>
+<a href="http://www.baidu.com" v-tap="aaa">我是测试a标签的跳转,会快速跳转</a>
+<p>item15</p>
+<p>item16</p>
+<p>item17</p>
+<p>item18</p>
+<p>item19</p>
+<p>item20</p>
 
 <script src="vue.js"></script>
-<script src="vue-tap-click.js"></script>
+<script src="vue-tap.js"></script>
 <script>
     var V = new Vue({
         el: "body",
