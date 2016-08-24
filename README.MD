@@ -27,14 +27,14 @@
 
 > * ES6
 ```javascript
-import vueTap from './vue-tap-click';
+import vueTap from './vue-tap';
 Vue.use(vueTap);
 ```
 
 > * 直接引入
 ```html
 <script src="./vue.js"></script>
-<script src="./vue-tap-click.js"></script>
+<script src="./vue-tap.js"></script>
 ```
 
 
