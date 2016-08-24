@@ -51,7 +51,7 @@
 					},false);
 					this.el.addEventListener('touchend',function(e) {
 						e.preventDefault();
-						if(self.el.href) {
+						if(self.el.href && !self.modifiers.prevent) {
 							return window.location = self.el.href;
 						}
 						return self.touchend(e,self,fn);

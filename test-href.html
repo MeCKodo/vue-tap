@@ -26,8 +26,8 @@
 <p>item9</p>
 <p>item10</p>
 <p>item11</p>
-<p v-tap.prevent="aaa">这里是.prevent的效果</p>
-<p v-tap.prevent="aaa">这里是.prevent的效果</p>
+<p v-tap.prevent="scroll">无法滑动页面</p>
+<a v-tap.prevent="cant" href="这是无法跳转的">这是无法跳转的</a>
 <p>item12</p>
 <p>item13</p>
 <p>item14</p>
@@ -52,7 +52,13 @@
             },
             aaa: function (e) {
                 console.log('a 跳转');
-            }
+            },
+			scroll: function(e) {
+				alert('prevent后也无法滑动页面了');
+			},
+			cant: function() {
+				alert('prevent后就无法跳转了');
+			}
         }
     });
 </script>
