@@ -6,6 +6,12 @@
 
 如果能帮到您，请右上角star吧:)
 
+### 2016.8.26(update)
+
+> * 发布npm, 各位可用`npm i v-tap --save;`下载使用
+> * 重写了currentTarget对象,避免currentTarget为null的情况
+> * fix : 判断el是否为a标签,避免获取href出错
+
 ### 2016.8.25(update)
 
 > * 经测试没有点透问题
