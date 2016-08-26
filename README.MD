@@ -1,6 +1,6 @@
 # vue-tap
 
-> tap手势基于vue.js
+> a v-tap directive of vue.js
 
 ## How To use
 
