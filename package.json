@@ -1,0 +1,20 @@
+{
+  "name": "v-tap",
+  "version": "1.0.1",
+  "description": "a directive of vue.js",
+  "main": "vue-tap.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeCKodo/vue-tap.git"
+  },
+  "keywords": [
+    "vue",
+    "v-tap"
+  ],
+  "author": "kodo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MeCKodo/vue-tap/issues"
+  },
+  "homepage": "https://github.com/MeCKodo/vue-tap#readme"
+}

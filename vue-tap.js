@@ -50,8 +50,16 @@
 						self.touchstart(e,self);
 					},false);
 					this.el.addEventListener('touchend',function(e) {
+						Object.defineProperties(e, { // 重写currentTarget对象 与jq相同
+							"currentTarget": {
+								value : self.el,
+								writable: true,
+								enumerable: true,
+								configurable: true
+							},
+						});
 						e.preventDefault();
-						if(self.el.href && !self.modifiers.prevent) {
+						if(!self.modifiers.prevent && self.el.href) {
 							return window.location = self.el.href;
 						}
 						return self.touchend(e,self,fn);
