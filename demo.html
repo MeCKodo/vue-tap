@@ -25,6 +25,15 @@
         #error {
             color: red;
         }
+		#testTarget {
+			color: #000;
+			background: #0b97c4;
+		}
+		#testTarget span {
+			display: inline-block;
+			padding:10px;
+			background: #abcdef;
+		}
     </style>
 </head>
 <body>
@@ -41,10 +50,17 @@
     </ul>
 </div>
 
+<p id="testTarget" v-tap="target($event)">
+	我绑定了事件(点击我target是我,currentTarget也是我)
+	<span id="target1">点击我target是我,currentTarget是父元素</span>
+	<span id="target2">点击我target是我,currentTarget是父元素</span>
+</p>
+
 <a href="www.baidu.com" v-tap.prevent="callback">I'm a tag</a>
 <script src="vue.js"></script>
 <script src="vue-tap.js"></script>
 <script>
+
     new Vue({
         el: "body",
         data : {
@@ -58,6 +74,10 @@
             }]
         },
         methods : {
+        	target : function(e) {
+				console.log(e.target)
+				console.log(e.currentTarget)
+			},
             args : function(index,el,e) {
                 // v-for循环带参数的回调
                 console.log('---index---',index);
