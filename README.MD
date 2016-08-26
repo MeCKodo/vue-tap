@@ -2,37 +2,6 @@
 
 > tap手势基于vue.js
 
-无需任何依赖
-
-如果能帮到您，请右上角star吧:)
-
-### 2016.8.26(update)
-
-> * 发布npm, 各位可用`npm i v-tap --save;`下载使用
-> * 重写了currentTarget对象,避免currentTarget为null的情况
-> * fix : 判断el是否为a标签,避免获取href出错
-
-### 2016.8.25(update)
-
-> * 经测试没有点透问题
-
-### 2016.8.24(update)
-
-> * 统一为v-tap,兼容`PC`和`移动端`
-> * 新增捕获a标签的href地址,点击a标签可实现快速跳转
-> * 解决部分手机点击没有反应的问题
-> * 准备加入npm大家庭
-
-
-### 2016.1.20(merge)
-
-> * 新增 dom带有disable属性时，tap失效
-
-### 2015.12.22(update)
-
-> * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
-> * vue-tap 是不带兼容版本, vue-tap-click兼容版本, 请客官自行选择进食.
-
 ## How To use
 
 > * ES6
@@ -100,4 +69,30 @@ args : function(index,el,e) {
 }
 ```
 
+### 2016.8.26(update)
+
+> * 发布npm, 各位可用`npm i v-tap --save;`下载使用
+> * 重写了currentTarget对象,避免currentTarget为null的情况
+> * fix : 判断el是否为a标签,避免获取href出错
+
+### 2016.8.25(update)
+
+> * 经测试没有点透问题
+
+### 2016.8.24(update)
+
+> * 统一为v-tap,兼容`PC`和`移动端`
+> * 新增捕获a标签的href地址,点击a标签可实现快速跳转
+> * 解决部分手机点击没有反应的问题
+> * 准备加入npm大家庭
+
+
+### 2016.1.20(merge)
+
+> * 新增 dom带有disable属性时，tap失效
+
+### 2015.12.22(update)
+
+> * 新增vue-tap-click版本兼容PC和移动端,v-tap指令将自动判断使用click还是tap事件
+> * vue-tap 是不带兼容版本, vue-tap-click兼容版本, 请客官自行选择进食.
 
