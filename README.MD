@@ -30,8 +30,14 @@
 ## How To use
 
 > * ES6
+
+``` bash
+# install vue-tap
+npm install v-tap --save;
+```
+
 ```javascript
-import vueTap from './vue-tap';
+import vueTap from 'v-tap';
 Vue.use(vueTap);
 ```
 

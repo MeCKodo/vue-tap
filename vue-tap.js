@@ -59,7 +59,7 @@
 							},
 						});
 						e.preventDefault();
-						if(!self.modifiers.prevent && self.el.href) {
+						if(!self.modifiers.prevent && self.el.tagName.toLocaleLowerCase() === 'a' && self.el.href) {
 							return window.location = self.el.href;
 						}
 						return self.touchend(e,self,fn);
