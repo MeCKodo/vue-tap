@@ -7,8 +7,10 @@
 > * ES6
 
 ``` bash
-# install vue-tap
-npm install v-tap --save;
+# install v-tap  
+npm install v-tap --save; 
+
+# 请注意！是**v-tap** 不是 **vue-tap**
 ```
 
 ```javascript
