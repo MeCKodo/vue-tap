@@ -28,8 +28,14 @@ Vue.use(vueTap);
 ## Example
 
 ```html
-<a id="demo" v-tap="callback">red</a>
-<a id="demo" v-tap.prevent="callback">red</a>
+// 具体请看demo  test-href.html
+<!--如果想要快速跳转直接写v-tap即可不用写任何参数-->
+<a href="www" v-tap>test a标签没有href则不会跳转</a>
+<p v-tap.prevent="scroll">无法滑动页面</p>
+<!-- 这样的a标签可以进行一些处理而不跳转 -->
+<a v-tap.prevent="callback" href="这是无法跳转的">这是无法跳转的</a>
+<!--这样一样会直接快速跳转不会执行cant 除非设置了prevent-->
+<a href="aaa" v-tap="callback">can't</a>
 ```
 
 ```javascript
@@ -70,6 +76,10 @@ args : function(index,el,e) {
 	//后面2个分别的手指可能移动的位置(以后可用于拓展手势)
 }
 ```
+
+### 2016.9.19(update)
+
+> * 优化了a标签快速跳转逻辑,可以直接在 <a href="xxx" v-tap></a> 写v-tap指令,这样即可快速跳转
 
 ### 2016.8.26(update)
 

@@ -27,12 +27,15 @@
 			update : function(fn) {
 				var self = this;
 				self.tapObj = {};
-				
-				if(typeof fn !== 'function') {
+				if(typeof fn !== 'function' && self.el.tagName.toLocaleLowerCase() !== 'a') {
 					return console.error('The param of directive "v-tap" must be a function!');
 				}
+				
 				self.handler = function(e) { //This directive.handler
 					e.tapObj = self.tapObj;
+					if(self.el.href && !self.modifiers.prevent) {
+						return window.location = self.el.href;
+					}
 					fn.call(self,e);
 				};
 				if(self.isPC()) {
@@ -59,9 +62,7 @@
 							},
 						});
 						e.preventDefault();
-						if(!self.modifiers.prevent && self.el.tagName.toLocaleLowerCase() === 'a' && self.el.href) {
-							return window.location = self.el.href;
-						}
+						
 						return self.touchend(e,self,fn);
 					},false);
 				}
