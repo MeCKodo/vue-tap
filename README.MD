@@ -77,6 +77,13 @@ args : function(index,el,e) {
 }
 ```
 
+### 2016.9.25(update)
+
+> * 修复了PC端的bug
+> * test-href.html页面,新增测试
+> * <a v-tap="a++">我是测试v-tap="a++"直接执行表达式</a>
+    <a href="javascript:widnow.history.go(-1);" v-tap>我是history.go(-1)</a>
+
 ### 2016.9.19(update)
 
 > * 优化了a标签快速跳转逻辑,可以直接在 <a href="xxx" v-tap></a> 写v-tap指令,这样即可快速跳转

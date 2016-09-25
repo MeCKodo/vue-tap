@@ -41,7 +41,7 @@
 				if(self.isPC()) {
 					self.el.addEventListener('click',function(e) {
 						e.preventDefault();
-						fn.call(self,e);
+						self.handler.call(self,e);
 					},false);
 				} else {
 					this.el.addEventListener('touchstart',function(e) {

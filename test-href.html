@@ -30,6 +30,8 @@
 <a v-tap.prevent="cant" href="这是无法跳转的">这是无法跳转的</a>
 <!--这样一样会直接快速跳转不会执行cant 除非设置了prevent-->
 <a href="aaa" v-tap="cant">can't</a>
+<a v-tap="a++">我是测试v-tap="a++"直接执行表达式</a>
+<a href="javascript:widnow.history.go(-1);" v-tap>我是history.go(-1)</a>
 <p>item12</p>
 <p>item13</p>
 <p>item14</p>
@@ -46,6 +48,9 @@
 <script>
     var V = new Vue({
         el: "body",
+		data : {
+        	a: 1,
+		},
         methods: {
             cli: function (e) {
 
