@@ -1,4 +1,4 @@
-# vue-tap
+# vue-tap ( 已支持vue2.0 )
 
 > a v-tap directive of vue.js
 
@@ -25,17 +25,85 @@ Vue.use(vueTap);
 ```
 
 
-## Example
+## Vue2.0
+
+> Vue2.0的绑定形式略有不同  主要改为 `v-tap={ methods : xxx , paramA : a,paramB:b}` 的形式
+
 
 ```html
 // 具体请看demo  test-href.html
 <!--如果想要快速跳转直接写v-tap即可不用写任何参数-->
-<a href="www" v-tap>test a标签没有href则不会跳转</a>
+<a href="http://www.baidu.com" v-tap>如果想要快速跳转直接写v-tap即可不用写任何参数</a>
+
+<p v-tap.prevent="{ methods : scroll }">无法滑动页面</p>
+
+<!-- 这样的a标签可以进行一些处理而不跳转 -->
+<a v-tap.prevent="{ methods : cant }" href="这是无法跳转的">这是无法跳转的</a>
+
+<!--这样一样会直接快速跳转不会执行cant 除非设置了prevent-->
+<a href="aaa" v-tap="{ methods : cant }">can't</a>
+
+<a v-tap="a++">v-tap="a++" 直接执行表达式在2.0里无法使用</a>
+
+<a href="javascript:window.history.go(-1);" v-tap>我可以直接在href里写js代码 如history.go(-1)</a>
+
+```
+
+```javascript
+new Vue({
+	el: "body",
+	methods : {
+		callback : function(params) {
+			// params 可获取绑定时候带的参数
+			console.log(params.event); // 原生事件
+			console.log(params.tapObj); // 手指触摸的一些参数
+			console.log(params.paramA); // 绑定时候传入的paramA
+			console.log(params.paramB); // 绑定时候传入的paramB
+		}
+	}
+});
+```
+
+## With parmas
+
+```html
+<ul>
+	<li v-for="(item,index) in list"
+		v-tap="{ methods:args , index : index, item:item }"
+			>
+		{{item.name}}---{{item.age}}
+	</li>
+</ul>
+```
+
+```javascript
+args : function(params) {
+	// v-for循环带参数的回调
+	console.log('---params.event---',params.event)
+	console.log('---params.tapObj---',params.tapObj);
+	console.log('---params.index---',params.index)
+	console.log('---params.el---',params.el)
+	//params.tapObj 可获得 tap的一些参数
+	//pageX,pageY,clientX,clientY,distanceX,distanceY
+	//后面2个分别的手指可能移动的位置(以后可用于拓展手势)
+},
+```
+
+
+## Vue1.0
+
+```html
+// 具体请看demo  test-href.html
+<!--如果想要快速跳转直接写v-tap即可不用写任何参数-->
+<a href="http://www.baidu.com" v-tap>如果想要快速跳转直接写v-tap即可不用写任何参数</a>
+
 <p v-tap.prevent="scroll">无法滑动页面</p>
+
 <!-- 这样的a标签可以进行一些处理而不跳转 -->
 <a v-tap.prevent="callback" href="这是无法跳转的">这是无法跳转的</a>
+
 <!--这样一样会直接快速跳转不会执行cant 除非设置了prevent-->
-<a href="aaa" v-tap="callback">can't</a>
+<a href="aaa" v-tap="cant">can't</a>
 ```
 
 ```javascript
@@ -77,7 +145,11 @@ args : function(index,el,e) {
 }
 ```
 
-### 2016.9.25(update)
+### 2016.10.02(update)
+
+
+
+### 2016.9.25(fix)
 
 > * 修复了PC端的bug
 > * test-href.html页面,新增测试

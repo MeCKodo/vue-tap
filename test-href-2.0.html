@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兼容tap和click事件</title><meta name="viewport"
+                                      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+		a {
+			display: block;
+		}
+    </style>
+</head>
+<body>
+<div id="app">
+	<div id="box" v-tap="{methods : cli}">我会console.log(e,this)</div>
+	<p>item1</p>
+	<p>item2</p>
+	<p>item3</p>
+	<p>item4</p>
+	<p>item5</p>
+	<p>item6</p>
+	<p>item10</p>
+	<p>item11</p>
+
+	<!--如果想要快速跳转直接写v-tap即可不用写任何参数-->
+	<a href="http://www.baidu.com" v-tap>如果想要快速跳转直接写v-tap即可不用写任何参数</a>
+ 	<br>
+	<p v-tap.prevent="{ methods : scroll }">由于写了.prevent 所以手指触摸这里是无法滑动页面的</p>
+	<br>
+
+	<!-- 这样的a标签可以进行一些处理而不跳转 -->
+	<a v-tap.prevent="{ methods : cant }" href="这是无法跳转的">这是无法跳转的</a>
+	<br>
+
+	<!--这样一样会直接快速跳转不会执行cant 除非设置了prevent-->
+	<a href="aaa" v-tap="{ methods : cant }">这样一样会直接快速跳转不会执行cant 除非设置了prevent</a>
+	<br>
+
+	<a v-tap="a++">v-tap="a++" 直接执行表达式在2.0里无法使用</a>
+	<br>
+
+	<a href="javascript:window.history.go(-1);" v-tap>我可以直接在href里写js代码 如history.go(-1)</a>
+	<br>
+
+	<p>item12</p>
+	<p>item13</p>
+	<p>item14</p>
+	<p>item15</p>
+	<p>item16</p>
+	<p>item17</p>
+	<p>item18</p>
+	<p>item19</p>
+	<p>item20</p>
+
+</div>
+
+<script src="vue2.0.js"></script>
+<script src="vue-tap.js"></script>
+<script>
+    var V = new Vue({
+        el: "#app",
+		data : {
+        	a: 1,
+		},
+        methods: {
+            cli: function (params) {
+                console.log(params.event);
+                console.log(this);
+            },
+			scroll: function(params) {
+				alert('prevent后也无法滑动页面了');
+			},
+			cant: function() {
+				alert('prevent后就无法跳转了');
+			}
+        }
+    });
+</script>
+</body>
+</html>
