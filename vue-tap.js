@@ -119,7 +119,7 @@
 			var value = binding.value;
 			el.tapObj = {};
 			el.handler = function (e) { //This directive.handler
-				if (el.href && !binding.modifiers.prevent) {
+				if (!value && el.href && !binding.modifiers.prevent) {
 					return window.location = el.href;
 				}
 				value.event = e;
@@ -128,7 +128,9 @@
 			};
 			if(isPc()) {
 				el.addEventListener('click', function (e) {
-					e.preventDefault();
+					if (!value && el.href && !binding.modifiers.prevent) {
+						return window.location = el.href;
+					}
 					value.event = e;
 					value.methods.call(this,value);
 				}, false);
