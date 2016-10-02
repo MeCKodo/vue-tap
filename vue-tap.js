@@ -85,7 +85,9 @@
 			};
 			if (isPc()) {
 				self.el.addEventListener('click', function (e) {
-					e.preventDefault();
+					if (self.el.href && !self.modifiers.prevent) {
+						return window.location = self.el.href;
+					}
 					self.handler.call(self, e);
 				}, false);
 			} else {
