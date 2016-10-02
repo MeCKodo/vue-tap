@@ -147,7 +147,7 @@ args : function(index,el,e) {
 
 ### 2016.10.02(update)
 
-
+支持Vue2.0,兼容Vue1.0
 
 ### 2016.9.25(fix)
 
