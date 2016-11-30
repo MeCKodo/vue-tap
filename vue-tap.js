@@ -121,7 +121,7 @@
 			var value = binding.value;
 			el.tapObj = {};
 			el.handler = function (e) { //This directive.handler
-				if (!value && el.href && !binding.modifiers.prevent) {
+				if (el.href && !binding.modifiers.prevent) {
 					return window.location = el.href;
 				}
 				value.event = e;
