@@ -38,7 +38,7 @@
 			return false;
 		}
 		var tapObj = self.tapObj;
-		return self.time < 150 && Math.abs(tapObj.distanceX) < 2 && Math.abs(tapObj.distanceY) < 2;
+		return self.time < 300 && Math.abs(tapObj.distanceX) < 20 && Math.abs(tapObj.distanceY) < 20;
 	}
 	
 	function touchstart(e, self) {
@@ -59,9 +59,8 @@
 		tapObj.distanceY = tapObj.pageY - touches.pageY;
 		
 		if (!isTap(self)) return;
-		setTimeout(function () {
 			self.handler(e);
-		}, 150)
+		
 	}
 	
 	/**                               公用方法结束                 * */
