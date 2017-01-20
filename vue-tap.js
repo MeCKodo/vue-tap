@@ -99,14 +99,7 @@
 					touchstart(e, self);
 				}, false);
 				self.el.addEventListener('touchend', function (e) {
-					Object.defineProperties(e, { // 重写currentTarget对象 与jq相同
-						"currentTarget": {
-							value: self.el,
-							writable: true,
-							enumerable: true,
-							configurable: true
-						},
-					});
+					e.currentTarget = el;			// 重写currentTarget对象 与jq相同
 					e.preventDefault();
 					
 					return touchend(e, self);
@@ -145,14 +138,7 @@
 					touchstart(e, el);
 				}, false);
 				el.addEventListener('touchend', function (e) {
-					Object.defineProperties(e, { // 重写currentTarget对象 与jq相同
-						"currentTarget": {
-							value: el,
-							writable: true,
-							enumerable: true,
-							configurable: true
-						},
-					});
+					e.currentTarget = el;		// 重写currentTarget对象 与jq相同
 					e.preventDefault();
 					
 					return touchend(e, el);
