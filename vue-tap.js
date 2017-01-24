@@ -19,7 +19,7 @@
 	var vueTap = {};
 	var isVue2 = false;
 	
-	/**                               公用方法开始                 * */
+	/**                               公用方法开始                 **/
 	function isPc() {
 		var uaInfo = navigator.userAgent;
 		var agents = ["Android", "iPhone", "Windows Phone", "iPad", "iPod"];
@@ -99,7 +99,7 @@
 					touchstart(e, self);
 				}, false);
 				self.el.addEventListener('touchend', function (e) {
-					Object.defineProperties(e, { // 重写currentTarget对象 与jq相同
+					Object.defineProperty(e, { // 重写currentTarget对象 与jq相同
 						"currentTarget": {
 							value: self.el,
 							writable: true,
@@ -145,7 +145,7 @@
 					touchstart(e, el);
 				}, false);
 				el.addEventListener('touchend', function (e) {
-					Object.defineProperties(e, { // 重写currentTarget对象 与jq相同
+					Object.defineProperty(e, { // 重写currentTarget对象 与jq相同
 						"currentTarget": {
 							value: el,
 							writable: true,
