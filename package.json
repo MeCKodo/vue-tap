@@ -1,6 +1,6 @@
 {
   "name": "v-tap",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "a directive of vue.js",
   "main": "vue-tap.js",
   "repository": {
