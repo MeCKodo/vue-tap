@@ -99,14 +99,20 @@
 					touchstart(e, self);
 				}, false);
 				self.el.addEventListener('touchend', function (e) {
-					Object.defineProperty(e, { // 重写currentTarget对象 与jq相同
-						"currentTarget": {
-							value: self.el,
-							writable: true,
-							enumerable: true,
-							configurable: true
-						},
-					});
+					try {
+					    Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
+						value: self.el,
+						writable: true,
+						enumerable: true,
+						configurable: true
+					    })
+					} catch (e) {
+					    // ios 7下对 e.currentTarget 用defineProperty会报错。
+					    // 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
+					    // 在catch里重写
+					    console.error(e.message)
+					    e.currentTarget = self.el
+					}
 					e.preventDefault();
 					
 					return touchend(e, self);
@@ -145,14 +151,20 @@
 					touchstart(e, el);
 				}, false);
 				el.addEventListener('touchend', function (e) {
-					Object.defineProperty(e, { // 重写currentTarget对象 与jq相同
-						"currentTarget": {
-							value: el,
-							writable: true,
-							enumerable: true,
-							configurable: true
-						},
-					});
+					try {
+					    Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
+						value: el,
+						writable: true,
+						enumerable: true,
+						configurable: true
+					    })
+					} catch (e) {
+					    // ios 7下对 e.currentTarget 用defineProperty会报错。
+					    // 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
+					    // 在catch里重写
+					    console.error(e.message)
+					    e.currentTarget = el
+					}
 					e.preventDefault();
 					
 					return touchend(e, el);
