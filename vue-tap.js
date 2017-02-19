@@ -59,7 +59,7 @@
 		tapObj.distanceY = tapObj.pageY - touches.pageY;
 		
 		if (!isTap(self)) return;
-			self.handler(e);
+		self.handler(e);
 		
 	}
 	
@@ -69,7 +69,7 @@
 		isFn: true,
 		acceptStatement: true,
 		update: function (fn) {
-			var self = this;
+			var self    = this;
 			self.tapObj = {};
 			if (typeof fn !== 'function' && self.el.tagName.toLocaleLowerCase() !== 'a') {
 				return console.error('The param of directive "v-tap" must be a function!');
@@ -100,18 +100,18 @@
 				}, false);
 				self.el.addEventListener('touchend', function (e) {
 					try {
-					    Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
-						value: self.el,
-						writable: true,
-						enumerable: true,
-						configurable: true
-					    })
+						Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
+							value: self.el,
+							writable: true,
+							enumerable: true,
+							configurable: true
+						})
 					} catch (e) {
-					    // ios 7下对 e.currentTarget 用defineProperty会报错。
-					    // 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
-					    // 在catch里重写
-					    console.error(e.message)
-					    e.currentTarget = self.el
+						// ios 7下对 e.currentTarget 用defineProperty会报错。
+						// 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
+						// 在catch里重写
+						console.error(e.message)
+						e.currentTarget = self.el
 					}
 					e.preventDefault();
 					
@@ -123,23 +123,23 @@
 	
 	var vue2 = {
 		bind: function (el, binding) {
-			var value = binding.value;
-			el.tapObj = {};
+			var value  = binding.value;
+			el.tapObj  = {};
 			el.handler = function (e) { //This directive.handler
 				if (!value && el.href && !binding.modifiers.prevent) {
 					return window.location = el.href;
 				}
-				value.event = e;
+				value.event  = e;
 				value.tapObj = el.tapObj;
 				value.methods.call(this, value);
 			};
-			if(isPc()) {
+			if (isPc()) {
 				el.addEventListener('click', function (e) {
 					if (!value && el.href && !binding.modifiers.prevent) {
 						return window.location = el.href;
 					}
 					value.event = e;
-					value.methods.call(this,value);
+					value.methods.call(this, value);
 				}, false);
 			} else {
 				el.addEventListener('touchstart', function (e) {
@@ -152,18 +152,18 @@
 				}, false);
 				el.addEventListener('touchend', function (e) {
 					try {
-					    Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
-						value: el,
-						writable: true,
-						enumerable: true,
-						configurable: true
-					    })
+						Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
+							value: el,
+							writable: true,
+							enumerable: true,
+							configurable: true
+						})
 					} catch (e) {
-					    // ios 7下对 e.currentTarget 用defineProperty会报错。
-					    // 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
-					    // 在catch里重写
-					    console.error(e.message)
-					    e.currentTarget = el
+						// ios 7下对 e.currentTarget 用defineProperty会报错。
+						// 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
+						// 在catch里重写
+						console.error(e.message)
+						e.currentTarget = el
 					}
 					e.preventDefault();
 					
@@ -174,7 +174,7 @@
 	};
 	
 	vueTap.install = function (Vue) {
-		if(Vue.version.substr(0,1) > 1 ) {
+		if (Vue.version.substr(0, 1) > 1) {
 			isVue2 = true;
 		}
 		

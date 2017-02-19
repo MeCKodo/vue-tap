@@ -1,5 +1,7 @@
 # vue-tap ( 已支持vue2.0 )
 
+[![npm](https://img.shields.io/npm/v/v-tap.svg)](https://www.npmjs.com/package/v-tap) [![npm](https://img.shields.io/npm/dm/v-tap.svg)](https://www.npmjs.com/package/v-tap)
+
 > a v-tap directive of vue.js
 
 ## How To use
