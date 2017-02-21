@@ -123,9 +123,6 @@
 	
 	var vue2 = {
 		update: function (el, binding) {
-			//避免反复绑定
-			if(el.isBind) return
-			
 			var value  = binding.value;
 			el.tapObj  = {};
 			el.handler = function (e) { //This directive.handler
@@ -139,6 +136,9 @@
 				    value.methods.call(this, value);
 				}
 			};
+			//避免反复绑定
+			if(el.isBind) return
+			
 			if (isPc()) {
 				el.addEventListener('click', function (e) {
 					if (!value && el.href && !binding.modifiers.prevent) {
