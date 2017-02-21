@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>兼容tap和click事件</title><meta name="viewport"
-                                      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <meta name="format-detection" content="telephone=no" />
-    <style>
-        #box {
-            width: 100px;
-            height: 100px;
-            background: red;
-        }
+	<meta charset="UTF-8">
+	<title>兼容tap和click事件</title>
+	<meta name="viewport"
+				content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+
 		a {
 			display: block;
 		}
-    </style>
+	</style>
 </head>
 <body>
 <div id="app">
@@ -30,7 +32,7 @@
 
 	<!--如果想要快速跳转直接写v-tap即可不用写任何参数-->
 	<a href="http://www.baidu.com" v-tap>如果想要快速跳转直接写v-tap即可不用写任何参数</a>
- 	<br>
+	<br>
 	<p v-tap.prevent="{ methods : scroll }">由于写了.prevent 所以手指触摸这里是无法滑动页面的</p>
 	<br>
 
@@ -63,24 +65,24 @@
 <script src="vue2.0.js"></script>
 <script src="vue-tap.js"></script>
 <script>
-    var V = new Vue({
-        el: "#app",
-		data : {
-        	a: 1,
-		},
-        methods: {
-            cli: function (params) {
-                console.log(params.event);
-                console.log(this);
-            },
-			scroll: function(params) {
-				alert('prevent后也无法滑动页面了');
-			},
-			cant: function() {
-				alert('prevent后就无法跳转了');
-			}
-        }
-    });
+  var V = new Vue({
+    el: "#app",
+    data: {
+      a: 1,
+    },
+    methods: {
+      cli: function (params) {
+        console.log(params.event);
+        console.log(this);
+      },
+      scroll: function (params) {
+        alert('prevent后也无法滑动页面了');
+      },
+      cant: function () {
+        alert('prevent后就无法跳转了');
+      }
+    }
+  });
 </script>
 </body>
 </html>

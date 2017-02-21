@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>兼容tap和click事件</title><meta name="viewport"
-                                      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <meta name="format-detection" content="telephone=no" />
-    <style>
-        #box {
-            width: 100px;
-            height: 100px;
-            background: red;
-        }
+	<meta charset="UTF-8">
+	<title>兼容tap和click事件</title>
+	<meta name="viewport"
+				content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<style>
+		#box {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+
 		a {
 			display: block;
 		}
-    </style>
+	</style>
 </head>
 <body>
 <div id="box" v-tap="cli">我会console.log(e,this)</div>
@@ -55,28 +57,28 @@
 <script src="vue.js"></script>
 <script src="vue-tap.js"></script>
 <script>
-    var V = new Vue({
-        el: "body",
-		data : {
-        	a: 1,
-		},
-        methods: {
-            cli: function (e) {
+  var V = new Vue({
+    el: "body",
+    data: {
+      a: 1,
+    },
+    methods: {
+      cli: function (e) {
 
-                console.log(e);
-                console.log(this);
-            },
-            aaa: function (e) {
-                console.log('a 跳转');
-            },
-			scroll: function(e) {
-				alert('prevent后也无法滑动页面了');
-			},
-			cant: function() {
-				alert('prevent后就无法跳转了');
-			}
-        }
-    });
+        console.log(e);
+        console.log(this);
+      },
+      aaa: function (e) {
+        console.log('a 跳转');
+      },
+      scroll: function (e) {
+        alert('prevent后也无法滑动页面了');
+      },
+      cant: function () {
+        alert('prevent后就无法跳转了');
+      }
+    }
+  });
 </script>
 </body>
 </html>

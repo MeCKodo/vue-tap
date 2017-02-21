@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="screen-orientation" content="portrait">
+	<title>Title</title>
+	<meta name="viewport"
+				content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+</head>
+<body>
+<div id="container">
+	<ul>
+		<li v-for="user in users" v-tap="{methods:getUser,user:user}">{{user.name}} :: {{user.age}}</li>
+	</ul>
+	<pre>
+		主要是为了测试在生命周期中改变数据是否可以获取正常
+	</pre>
+</div>
+<script src="vue2.0.js"></script>
+<script src="vue-tap.js"></script>
+<script>
+  new Vue({
+    el: "#container",
+    data: {
+      users : [{
+        name : 'kodo',
+				age : 19
+			},{
+        name : 'kodo1',
+				age : 18
+			}]
+    },
+    mounted() {
+      this.users.unshift({name : 'kodo-1',age:11});
+      this.users.push({name : 'kodo2',age:20});
+    },
+    methods: {
+      handelClick(params) {
+        console.log(params);
+      },
+      getUser(params) {
+				console.log(params.user)
+			}
+    }
+  })
+</script>
+</body>
+</html>

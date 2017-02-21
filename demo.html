@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="vue.js"></script>
-    <style>
-        body {
-            color: #fff;
-        }
-        #demo {
-            background: red;
-        }
-        #demo1 {
-            width: 100px;
-            height: 100px;
-            background: blue;
-        }
-        #demo2 {
-            width: 100px;
-            height: 100px;
-            background: green;
-        }
-        #error {
-            color: red;
-        }
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<script src="vue.js"></script>
+	<style>
+		body {
+			color: #fff;
+		}
+
+		#demo {
+			background: red;
+		}
+
+		#demo1 {
+			width: 100px;
+			height: 100px;
+			background: blue;
+		}
+
+		#demo2 {
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+
+		#error {
+			color: red;
+		}
+
 		#testTarget {
 			color: #000;
 			background: #0b97c4;
 		}
+
 		#testTarget span {
 			display: inline-block;
-			padding:10px;
+			padding: 10px;
 			background: #abcdef;
 		}
-    </style>
+	</style>
 </head>
 <body>
 <div id="demo">
-    <ul>
-        <li v-for="el in list"
-            v-tap="args($index,el,$event)"
-                >
-            {{el.name}}---{{el.age}}
-        </li>
+	<ul>
+		<li v-for="el in list"
+				v-tap="args($index,el,$event)"
+		>
+			{{el.name}}---{{el.age}}
+		</li>
 		<li>
 			这个是测试传入参数的demo
 		</li>
-    </ul>
+	</ul>
 </div>
 
 <p id="testTarget" v-tap="target($event)">
@@ -63,40 +69,40 @@
 <script src="vue-tap.js"></script>
 <script>
 
-    new Vue({
-        el: "body",
-        data : {
-          testStr : 'string',
-            list : [{
-                name : "name1",
-                age: 18
-            },{
-                name : "name2",
-                age: 11
-            }]
-        },
-        methods : {
-        	target : function(e) {
-				console.log(e.target)
-				console.log(e.currentTarget)
-			},
-            args : function(index,el,e) {
-                // v-for循环带参数的回调
-                console.log('---index---',index);
-                console.log('---el---',el);
-                console.log('---e---',e);
-                console.log(e.tapObj);
-                //e.tapObj 可获得 tap的一些参数
-                //pageX,pageY,clientX,clientY,distanceX,distanceY
-                //后面2个分别的手指可能移动的位置(以后可用于拓展手势)
-            },
-            callback : function(e) {
-                //不带参数指令,e为event对象
-                console.log('---e---',e);
-                console.log('---tapObj---', e.tapObj);
-            }
-        }
-    });
+  new Vue({
+    el: "body",
+    data: {
+      testStr: 'string',
+      list: [{
+        name: "name1",
+        age: 18
+      }, {
+        name: "name2",
+        age: 11
+      }]
+    },
+    methods: {
+      target: function (e) {
+        console.log(e.target)
+        console.log(e.currentTarget)
+      },
+      args: function (index, el, e) {
+        // v-for循环带参数的回调
+        console.log('---index---', index);
+        console.log('---el---', el);
+        console.log('---e---', e);
+        console.log(e.tapObj);
+        //e.tapObj 可获得 tap的一些参数
+        //pageX,pageY,clientX,clientY,distanceX,distanceY
+        //后面2个分别的手指可能移动的位置(以后可用于拓展手势)
+      },
+      callback: function (e) {
+        //不带参数指令,e为event对象
+        console.log('---e---', e);
+        console.log('---tapObj---', e.tapObj);
+      }
+    }
+  });
 </script>
 </body>
 </html>
