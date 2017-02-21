@@ -122,9 +122,9 @@
 	};
 	
 	var vue2 = {
-		update: function (el, binding) {
-			var value  = binding.value;
-			el.tapObj  = {};
+		bind: function (el, binding) {
+			var value = binding.value;
+			el.tapObj = {};
 			el.handler = function (e) { //This directive.handler
 				if (!value && el.href && !binding.modifiers.prevent) {
 					return window.location = el.href;
@@ -136,16 +136,13 @@
 				    value.methods.call(this, value);
 				}
 			};
-			//避免反复绑定
-			if(el.isBind) return
-			
-			if (isPc()) {
+			if(isPc()) {
 				el.addEventListener('click', function (e) {
 					if (!value && el.href && !binding.modifiers.prevent) {
 						return window.location = el.href;
 					}
 					value.event = e;
-					value.methods.call(this, value);
+					value.methods.call(this,value);
 				}, false);
 			} else {
 				el.addEventListener('touchstart', function (e) {
@@ -158,26 +155,40 @@
 				}, false);
 				el.addEventListener('touchend', function (e) {
 					try {
-						Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
-							value: el,
-							writable: true,
-							enumerable: true,
-							configurable: true
-						})
+					    Object.defineProperty(e, 'currentTarget', {// 重写currentTarget对象 与jq相同
+						value: el,
+						writable: true,
+						enumerable: true,
+						configurable: true
+					    })
 					} catch (e) {
-						// ios 7下对 e.currentTarget 用defineProperty会报错。
-						// 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
-						// 在catch里重写
-						console.error(e.message)
-						e.currentTarget = el
+					    // ios 7下对 e.currentTarget 用defineProperty会报错。
+					    // 报“TypeError：Attempting to configurable attribute of unconfigurable property”错误
+					    // 在catch里重写
+					    console.error(e.message)
+					    e.currentTarget = el
 					}
 					e.preventDefault();
 					
 					return touchend(e, el);
 				}, false);
-				el.isBind=true;			
-}
+			}
 		},
+		update:function(el, binding){
+		    var value = binding.value;
+		    el.tapObj = {};
+		    el.handler = function (e) { //This directive.handler
+			if (!value && el.href && !binding.modifiers.prevent) {
+			    return window.location = el.href;
+			}
+			//兼容v-tap:stop写法
+			if(value){
+			    value.event = e;
+			    value.tapObj = el.tapObj;
+			    value.methods.call(this, value);
+			}
+		    };
+		}
 	};
 	
 	vueTap.install = function (Vue) {
