@@ -122,16 +122,22 @@
 	};
 	
 	var vue2 = {
-		bind: function (el, binding) {
+		update: function (el, binding) {
+			//避免反复绑定
+			if(el.isBind) return
+			
 			var value  = binding.value;
 			el.tapObj  = {};
 			el.handler = function (e) { //This directive.handler
 				if (!value && el.href && !binding.modifiers.prevent) {
 					return window.location = el.href;
 				}
-				value.event  = e;
-				value.tapObj = el.tapObj;
-				value.methods.call(this, value);
+				//兼容v-tap:stop写法
+				if(value){
+				    value.event = e;
+				    value.tapObj = el.tapObj;
+				    value.methods.call(this, value);
+				}
 			};
 			if (isPc()) {
 				el.addEventListener('click', function (e) {
@@ -169,7 +175,8 @@
 					
 					return touchend(e, el);
 				}, false);
-			}
+				el.isBind=true;			
+}
 		},
 	};
 	
