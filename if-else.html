@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="screen-orientation" content="portrait">
+	<meta name="viewport"
+				content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>方圆书院</title>
+</head>
+<body>
+<div id="container">
+	<h1>
+		// 修复v-if  v-else重复事件绑定的问题
+	</h1>
+	<div class="right" v-tap="{ methods : sendOrder }" v-if="canBuy"> 确认订购if </div>
+	<div v-else class="right disable">确认订购else</div>
+</div>
+<script src="./vue2.0.js"></script>
+<script src="./vue-tap.js"></script>
+<script>
+  new Vue({
+    el : "#container",
+    data : {
+      canBuy : true,
+    },
+    mounted:function () {
+      // 修复v-if  v-else的问题
+      setTimeout(() => {
+        this.canBuy = false;
+        setTimeout(() => {
+          this.canBuy = true;
+        },2000);
+      },2000);
+
+    },
+    methods : {
+      sendOrder : function () {
+				if(this.canBuy) {
+					console.log('if')
+        } else {
+				  console.log('else');
+				}
+      }
+    }
+  })
+</script>
+</body>
+</html>

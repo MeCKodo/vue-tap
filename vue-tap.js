@@ -123,6 +123,7 @@
 
   var vue2 = {
     bind: function (el, binding) {
+      console.log(binding)
       el.tapObj = {};
       el.handler = function (e,isPc) { //This directive.handler
         var value = binding.value;
@@ -183,6 +184,10 @@
         !isPc ? value.tapObj = el.tapObj : null;
         value.methods.call(this, value);
       };
+    },
+    unbind: function (el) {
+      // 卸载，别说了都是泪
+      el.handler = function () {};
     }
   };
 
