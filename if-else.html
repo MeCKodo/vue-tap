@@ -13,8 +13,17 @@
 	<h1>
 		// 修复v-if  v-else重复事件绑定的问题
 	</h1>
-	<div class="right" v-tap="{ methods : sendOrder }" v-if="canBuy"> 确认订购if </div>
+	<div class="right" v-tap="{ methods : sendOrder, name : 'kodo' }" v-if="canBuy"> 确认订购if </div>
 	<div v-else class="right disable">确认订购else</div>
+
+	<ul>
+		<li v-if="index === 1" v-tap="{ methods : choose, name : 'kodo' }">
+			123
+		</li>
+		<li v-if="index === 2" v-tap="{ methods : choose, name : '二哲' }">
+			456
+		</li>
+	</ul>
 </div>
 <script src="./vue2.0.js"></script>
 <script src="./vue-tap.js"></script>
@@ -23,18 +32,23 @@
     el : "#container",
     data : {
       canBuy : true,
+			index : 1,
     },
     mounted:function () {
       // 修复v-if  v-else的问题
       setTimeout(() => {
         this.canBuy = false;
+        this.index = 2;
         setTimeout(() => {
           this.canBuy = true;
         },2000);
-      },2000);
+      },5000);
 
     },
     methods : {
+			choose : function(params) {
+				console.log(params);
+			},
       sendOrder : function () {
 				if(this.canBuy) {
 					console.log('if')
