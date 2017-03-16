@@ -1,4 +1,4 @@
-# vue-tap ( 已支持vue2.0，最下方有更新日志)
+# vue-tap ( 已支持vue2.0，最下方有更新日志 )
 
 [![npm](https://img.shields.io/npm/v/v-tap.svg)](https://www.npmjs.com/package/v-tap) [![npm](https://img.shields.io/npm/dm/v-tap.svg)](https://www.npmjs.com/package/v-tap)
 
