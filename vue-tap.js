@@ -123,7 +123,6 @@
 
   var vue2 = {
     bind: function (el, binding) {
-      console.log(binding)
       el.tapObj = {};
       el.handler = function (e,isPc) { //This directive.handler
         var value = binding.value;
