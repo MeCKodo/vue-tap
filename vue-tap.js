@@ -38,7 +38,7 @@
       return false;
     }
     var tapObj = self.tapObj;
-    return self.time < 300 && Math.abs(tapObj.distanceX) < 2 && Math.abs(tapObj.distanceY) < 2;
+    return self.time < 300 && Math.abs(tapObj.distanceX) < 10 && Math.abs(tapObj.distanceY) < 10;
   }
 
   function touchstart(e, self) {
