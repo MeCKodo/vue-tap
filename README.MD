@@ -12,7 +12,9 @@
 
 ### 2017.06.17(fix)
 
-> * 修复父级DOM里含有input，点击input无法聚焦的BUG
+> * 修复父级DOM里含有input，点击input无法聚焦的BUG（仅支持vue2以上的版本）
+> * vue1.x不再新增特性
+> * 下一步准备新增长按事件 (v-tap:long)
 
 ### 2017.03.16(fix)
 
