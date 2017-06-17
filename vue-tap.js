@@ -59,7 +59,7 @@
     tapObj.distanceY = tapObj.pageY - touches.pageY;
 
     if (!isTap(self)) return;
-      self.handler(e);
+    self.handler(e);
 
   }
 
@@ -126,11 +126,16 @@
       el.tapObj = {};
       el.handler = function (e,isPc) { //This directive.handler
         var value = binding.value;
+        value.event = e;
+        var tagName = value.event.target.tagName.toLocaleLowerCase();
+        !isPc ? value.tapObj = el.tapObj : null;
+
+        if(tagName === 'input') {
+          return value.event.target.focus();
+        }
         if (!value && el.href && !binding.modifiers.prevent) {
           return window.location = el.href;
         }
-        value.event = e;
-        !isPc ? value.tapObj = el.tapObj : null;
         value.methods.call(this, value);
       };
       if (isPc()) {
@@ -197,6 +202,7 @@
 
     Vue.directive('tap', isVue2 ? vue2 : vue1);
   };
+  vueTap.version = '3.0.2';
 
   if (typeof exports == "object") {
     module.exports = vueTap;
