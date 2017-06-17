@@ -6,7 +6,7 @@
 
 ## How To use
 
-
+[example](https://github.com/MeCKodo/vue-tap/blob/master/doc/use.MD)
 
 ## Update
 
