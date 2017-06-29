@@ -130,7 +130,7 @@
         var tagName = value.event.target.tagName.toLocaleLowerCase();
         !isPc ? value.tapObj = el.tapObj : null;
 
-        if(tagName === 'input') {
+        if(tagName === 'input' || tagName === 'textarea') {
           return value.event.target.focus();
         }
         if (!value && el.href && !binding.modifiers.prevent) {
