@@ -126,6 +126,11 @@
       el.tapObj = {};
       el.handler = function (e,isPc) { //This directive.handler
         var value = binding.value;
+        
+        if (!value && el.href && !binding.modifiers.prevent) {
+          return window.location = el.href;
+        }
+        
         value.event = e;
         var tagName = value.event.target.tagName.toLocaleLowerCase();
         !isPc ? value.tapObj = el.tapObj : null;
@@ -133,9 +138,7 @@
         if(tagName === 'input' || tagName === 'textarea') {
           return value.event.target.focus();
         }
-        if (!value && el.href && !binding.modifiers.prevent) {
-          return window.location = el.href;
-        }
+        
         value.methods.call(this, value);
       };
       if (isPc()) {

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="../vue-tap.js"></script>
+</head>
+<body>
+	<div id="app">
+ 		<h1>Hello App</h1>
+ 		<p>
+ 			<router-link to="/home" v-tap>go to Home</router-link>
+ 			<router-link to="/about">go to About</router-link>
+ 		</p>
+
+ 		<router-view></router-view>
+	</div>
+
+	
+	<script>
+		
+		var Home = Vue.extend({
+			template: '<div><h1><p>{{msg}}</p></h1></div>',
+			data: function () {
+				return {
+					msg: 'hello world!'
+				}
+			}
+		});
+
+		var About = Vue.extend({
+    	template: '<div><h1>About</h1><p> This is the tutorial about vue-router. </p></div>'
+		})
+
+		var router = new VueRouter({
+			routes: [
+				{path: '/home', component: Home},
+				{path: '/about', component: About},
+			]
+		})
+
+	  new Vue({
+	   router
+	  }).$mount("#app");
+	</script>
+</body>
+
+</html>
