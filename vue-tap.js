@@ -80,6 +80,12 @@
         if (self.el.href && !self.modifiers.prevent) {
           return window.location = self.el.href;
         }
+
+        var tagName = e.target.tagName.toLocaleLowerCase();
+        if(tagName === 'input' || tagName === 'textarea') {
+          return e.target.focus();
+        }
+
         fn.call(self, e);
       };
       if (isPc()) {
@@ -126,11 +132,11 @@
       el.tapObj = {};
       el.handler = function (e,isPc) { //This directive.handler
         var value = binding.value;
-        
+
         if (!value && el.href && !binding.modifiers.prevent) {
           return window.location = el.href;
         }
-        
+
         value.event = e;
         var tagName = value.event.target.tagName.toLocaleLowerCase();
         !isPc ? value.tapObj = el.tapObj : null;
@@ -138,7 +144,7 @@
         if(tagName === 'input' || tagName === 'textarea') {
           return value.event.target.focus();
         }
-        
+
         value.methods.call(this, value);
       };
       if (isPc()) {
