@@ -211,7 +211,7 @@
 
     Vue.directive('tap', isVue2 ? vue2 : vue1);
   };
-  vueTap.version = '3.0.2';
+  vueTap.version = '3.0.3';
 
   if (typeof exports == "object") {
     module.exports = vueTap;
